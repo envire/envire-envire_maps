@@ -24,36 +24,47 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef envire_maps_SpatioTemporalMLSMapKalman_H
-#define envire_maps_SpatioTemporalMLSMapKalman_H
+#ifndef envire_maps_SpatioTemporalElevationMapVisualization_H
+#define envire_maps_SpatioTemporalElevationMapVisualization_H
 
 #include <boost/noncopyable.hpp>
 #include <vizkit3d/Vizkit3DPlugin.hpp>
 #include <osg/Geode>
-#include <envire/items/SpatioTemporal.hpp>
+#include <envire_core/items/SpatioTemporal.hpp>
+#include <maps/grid/ElevationMap.hpp>
+#include <vizkit3d/ElevationMapVisualization.hpp>
 
 namespace vizkit3d
 {
-    class SpatioTemporalMLSMapKalman
-        : public vizkit3d::Vizkit3DPlugin<envire::core::SpatioTemporal<maps::grid::MLSMapKalman>>
-        , boost::noncopyable
+    class SpatioTemporalElevationMapVisualization
+        : public ElevationMapVisualization
     {
-    Q_OBJECT
+        Q_OBJECT
+
     public:
-        SpatioTemporalMLSMapKalman();
-        ~SpatioTemporalMLSMapKalman();
+        SpatioTemporalElevationMapVisualization()
+        {
+        }
 
-    Q_INVOKABLE void updateData(envire::core::SpatioTemporal<maps::grid::MLSMapKalman> const &sample)
-    {vizkit3d::Vizkit3DPlugin<envire::core::SpatioTemporal<maps::grid::MLSMapKalman>>::updateData(sample);}
-
-    protected:
-        virtual osg::ref_ptr<osg::Node> createMainNode();
-        virtual void updateMainNode(osg::Node* node);
-        virtual void updateDataIntern(envire::core::SpatioTemporal<maps::grid::MLSMapKalman> const& plan);
+        ~SpatioTemporalElevationMapVisualization()
+        {
+        }
         
+        template<class T>
+        void updateData(const envire::core::SpatioTemporal<T>& data)
+        {
+            setVisualizationFrame(QString::fromStdString(data.frame_id));
+            ElevationMapVisualization::updateData(data.data);
+        }
+        
+        Q_INVOKABLE void updateData(const envire::core::SpatioTemporal<maps::grid::ElevationMap>& data)
+        { updateData<maps::grid::ElevationMap>(data); }
+        
+        Q_INVOKABLE void updateSpatioTemporalElevationMap(const envire::core::SpatioTemporal<maps::grid::ElevationMap>& data)
+        { updateData(data); }
+
     private:
-        struct Data;
-        Data* p;
     };
 }
+
 #endif

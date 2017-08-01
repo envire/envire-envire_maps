@@ -1,6 +1,19 @@
-#rock_vizkit_plugin(envire_maps-viz
-#    SpatioTemporalMLSMapKalman.cpp
-#    DEPS envire_maps
-#    MOC SpatioTemporalMLSMapKalman.hpp
-#    HEADERS SpatioTemporalMLSMapKalman.hpp)
-
+rock_vizkit_plugin(envire_maps-viz
+        PluginLoader.cpp
+    MOC
+        SpatioTemporalContourMapVisualization.hpp
+        SpatioTemporalElevationMapVisualization.hpp
+        SpatioTemporalGridMapVisualization.hpp
+        SpatioTemporalMLSMapVisualization.hpp
+        SpatioTemporalOccupancyGridMapVisualization.hpp
+    HEADERS
+        SpatioTemporalContourMapVisualization.hpp
+        SpatioTemporalElevationMapVisualization.hpp
+        SpatioTemporalGridMapVisualization.hpp
+        SpatioTemporalMLSMapVisualization.hpp
+        SpatioTemporalOccupancyGridMapVisualization.hpp
+    DEPS
+        envire_maps
+    DEPS_PKGCONFIG
+        maps-viz
+)

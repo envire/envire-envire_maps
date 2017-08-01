@@ -24,48 +24,47 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include <iostream>
-#include "SpatioTemporalMLSMapKalman.hpp"
+#ifndef envire_maps_SpatioTemporalOccupancyGridMapVisualization_H
+#define envire_maps_SpatioTemporalOccupancyGridMapVisualization_H
 
-using namespace vizkit3d;
+#include <boost/noncopyable.hpp>
+#include <vizkit3d/Vizkit3DPlugin.hpp>
+#include <osg/Geode>
+#include <envire_core/items/SpatioTemporal.hpp>
+#include <maps/grid/OccupancyGridMap.hpp>
+#include <vizkit3d/OccupancyGridMapVisualization.hpp>
 
-struct SpatioTemporalMLSMapKalman::Data {
-    // Copy of the value given to updateDataIntern.
-    //
-    // Making a copy is required because of how OSG works
-    envire::core::SpatioTemporal<maps::grid::MLSMapKalman> data;
-};
-
-
-SpatioTemporalMLSMapKalman::SpatioTemporalMLSMapKalman()
-    : p(new Data)
+namespace vizkit3d
 {
+    class SpatioTemporalOccupancyGridMapVisualization
+        : public OccupancyGridMapVisualization
+    {
+        Q_OBJECT
+
+    public:
+        SpatioTemporalOccupancyGridMapVisualization()
+        {
+        }
+
+        ~SpatioTemporalOccupancyGridMapVisualization()
+        {
+        }
+        
+        template<class T>
+        void updateData(const envire::core::SpatioTemporal<T>& data)
+        {
+            setVisualizationFrame(QString::fromStdString(data.frame_id));
+            OccupancyGridMapVisualization::updateData(data.data);
+        }
+        
+        Q_INVOKABLE void updateData(const envire::core::SpatioTemporal<maps::grid::OccupancyGridMap>& data)
+        { updateData<maps::grid::OccupancyGridMap>(data); }
+        
+        Q_INVOKABLE void updateSpatioTemporalOccupancyGridMap(const envire::core::SpatioTemporal<maps::grid::OccupancyGridMap>& data)
+        { updateData(data); }
+
+    private:
+    };
 }
 
-SpatioTemporalMLSMapKalman::~SpatioTemporalMLSMapKalman()
-{
-    delete p;
-}
-
-osg::ref_ptr<osg::Node> SpatioTemporalMLSMapKalman::createMainNode()
-{
-    // Geode is a common node used for vizkit3d plugins. It allows to display
-    // "arbitrary" geometries
-    return new osg::Geode();
-}
-
-void SpatioTemporalMLSMapKalman::updateMainNode ( osg::Node* node )
-{
-    osg::Geode* geode = static_cast<osg::Geode*>(node);
-    // Update the main node using the data in p->data
-}
-
-void SpatioTemporalMLSMapKalman::updateDataIntern(envire::core::SpatioTemporal<maps::grid::MLSMapKalman> const& value)
-{
-    p->data = value;
-    std::cout << "got new sample data" << std::endl;
-}
-
-//Macro that makes this plugin loadable in ruby, this is optional.
-VizkitQtPlugin(SpatioTemporalMLSMapKalman)
-
+#endif
