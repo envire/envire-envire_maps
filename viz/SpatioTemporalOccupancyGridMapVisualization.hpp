@@ -31,8 +31,9 @@
 #include <vizkit3d/Vizkit3DPlugin.hpp>
 #include <osg/Geode>
 #include <envire_core/items/SpatioTemporal.hpp>
-#include <maps/grid/OccupancyGridMap.hpp>
+#ifndef Q_MOC_RUN
 #include <vizkit3d/OccupancyGridMapVisualization.hpp>
+#endif
 
 namespace vizkit3d
 {
@@ -56,10 +57,10 @@ namespace vizkit3d
             setVisualizationFrame(QString::fromStdString(data.frame_id));
             OccupancyGridMapVisualization::updateData(data.data);
         }
-        
+
         Q_INVOKABLE void updateData(const envire::core::SpatioTemporal<maps::grid::OccupancyGridMap>& data)
         { updateData<maps::grid::OccupancyGridMap>(data); }
-        
+
         Q_INVOKABLE void updateSpatioTemporalOccupancyGridMap(const envire::core::SpatioTemporal<maps::grid::OccupancyGridMap>& data)
         { updateData(data); }
 

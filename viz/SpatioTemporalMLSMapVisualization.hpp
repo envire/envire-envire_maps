@@ -31,8 +31,9 @@
 #include <vizkit3d/Vizkit3DPlugin.hpp>
 #include <osg/Geode>
 #include <envire_core/items/SpatioTemporal.hpp>
-#include <maps/grid/MLSMap.hpp>
+#ifndef Q_MOC_RUN
 #include <vizkit3d/MLSMapVisualization.hpp>
+#endif
 
 namespace vizkit3d
 {
