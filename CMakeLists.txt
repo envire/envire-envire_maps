@@ -5,7 +5,7 @@ find_package(Rock)
 set(ROCK_USE_CXX11 TRUE)
 set(ROCK_TEST_ENABLED ON)
 
-include(PluginManager)
-include(EnvireGIS)
+find_package(PluginManager)
+find_package(EnvireGIS)
 rock_init(envire_maps 0.1)
 envire_gis_plugin_layout() #it extends rock_standard_layout
