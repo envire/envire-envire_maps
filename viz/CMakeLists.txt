@@ -6,12 +6,14 @@ rock_vizkit_plugin(envire_maps-viz
         SpatioTemporalGridMapVisualization.hpp
         SpatioTemporalMLSMapVisualization.hpp
         SpatioTemporalOccupancyGridMapVisualization.hpp
+        SpatioTemporalTraversabilityGridVisualization.hpp
     HEADERS
         SpatioTemporalContourMapVisualization.hpp
         SpatioTemporalElevationMapVisualization.hpp
         SpatioTemporalGridMapVisualization.hpp
         SpatioTemporalMLSMapVisualization.hpp
         SpatioTemporalOccupancyGridMapVisualization.hpp
+        SpatioTemporalTraversabilityGridVisualization.hpp
     DEPS
         envire_maps
     DEPS_PKGCONFIG

@@ -4,6 +4,7 @@
 #include "SpatioTemporalGridMapVisualization.hpp"
 #include "SpatioTemporalMLSMapVisualization.hpp"
 #include "SpatioTemporalOccupancyGridMapVisualization.hpp"
+#include "SpatioTemporalTraversabilityGridVisualization.hpp"
 
 namespace vizkit3d {
     class QtPluginVizkitBase : public vizkit3d::VizkitPluginFactory {
@@ -25,6 +26,7 @@ namespace vizkit3d {
             pluginNames->push_back("SpatioTemporalGridMapVisualization");
             pluginNames->push_back("SpatioTemporalMLSMapVisualization");
             pluginNames->push_back("SpatioTemporalOccupancyGridMapVisualization");
+            pluginNames->push_back("SpatioTemporalTraversabilityGridVisualization");
             return pluginNames;
         }
         
@@ -50,6 +52,10 @@ namespace vizkit3d {
             else if (pluginName == "SpatioTemporalOccupancyGridMapVisualization")
             {
                 plugin = new vizkit3d::SpatioTemporalOccupancyGridMapVisualization();
+            }
+            else if (pluginName == "SpatioTemporalTraversabilityGridVisualization")
+            {
+                plugin = new vizkit3d::SpatioTemporalTraversabilityGridVisualization();
             }
 
             if (plugin) 

@@ -42,3 +42,6 @@ Vizkit::UiLoader.register_3d_plugin_for('SpatioTemporalMLSMapVisualization', "/e
 
 Vizkit::UiLoader.register_3d_plugin('SpatioTemporalOccupancyGridMapVisualization', 'envire_maps', 'SpatioTemporalOccupancyGridMapVisualization')
 Vizkit::UiLoader.register_3d_plugin_for('SpatioTemporalOccupancyGridMapVisualization', "/envire/core/SpatioTemporal</maps/grid/OccupancyGridMap>", :updateSpatioTemporalOccupancyGridMap)
+
+Vizkit::UiLoader.register_3d_plugin('SpatioTemporalTraversabilityGridVisualization', 'envire_maps', 'SpatioTemporalTraversabilityGridVisualization')
+Vizkit::UiLoader.register_3d_plugin_for('SpatioTemporalTraversabilityGridVisualization', "/envire/core/SpatioTemporal</maps/grid/TraversabilityGrid>", :updateSpatioTemporalTraversabilityGrid)
