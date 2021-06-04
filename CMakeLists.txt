@@ -2,8 +2,10 @@
 # executed from 'project/build' with 'cmake ../'.
 cmake_minimum_required(VERSION 2.6)
 find_package(Rock)
-set(ROCK_USE_CXX11 TRUE)
+
 set(ROCK_TEST_ENABLED ON)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(PluginManager)
 find_package(EnvireGIS)
