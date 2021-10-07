@@ -2,7 +2,16 @@
 # executed from 'project/build' with 'cmake ../'.
 cmake_minimum_required(VERSION 2.6)
 find_package(Rock)
-set(ROCK_USE_CXX11 TRUE)
+
+# Default to C++14 (PCL requirement)
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+# class_loader (and rock.core package_set patch) setting boost targets as libs
+# so we need search for them here
+find_package(Boost COMPONENTS system thread)
+
 set(ROCK_TEST_ENABLED ON)
 
 find_package(PluginManager)
