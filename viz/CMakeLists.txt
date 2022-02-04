@@ -1,3 +1,4 @@
+rock_find_qt5(Core)
 rock_vizkit_plugin(envire_maps-viz
         PluginLoader.cpp
     MOC
