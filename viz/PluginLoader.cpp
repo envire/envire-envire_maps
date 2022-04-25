@@ -1,4 +1,4 @@
-#include <vizkit3d/Vizkit3DPlugin.hpp>
+#include "PluginLoader.hpp"
 #include "SpatioTemporalContourMapVisualization.hpp"
 #include "SpatioTemporalElevationMapVisualization.hpp"
 #include "SpatioTemporalGridMapVisualization.hpp"
@@ -7,18 +7,15 @@
 #include "SpatioTemporalTraversabilityGridVisualization.hpp"
 
 namespace vizkit3d {
-    class QtPluginVizkitBase : public vizkit3d::VizkitPluginFactory {
-    private:
-    public:
         
-        QtPluginVizkitBase() {
+        QtPluginVizkitBase::QtPluginVizkitBase() {
         }
         
         /**
         * Returns a list of all available visualization plugins.
         * @return list of plugin names
         */
-        virtual QStringList* getAvailablePlugins() const
+        QStringList* QtPluginVizkitBase::getAvailablePlugins() const
         {
             QStringList *pluginNames = new QStringList();
             pluginNames->push_back("SpatioTemporalContourMapVisualization");
@@ -30,7 +27,7 @@ namespace vizkit3d {
             return pluginNames;
         }
         
-        virtual QObject* createPlugin(QString const& pluginName)
+        QObject* QtPluginVizkitBase::createPlugin(QString const& pluginName)
         {
             vizkit3d::VizPluginBase* plugin = 0;
             if (pluginName == "SpatioTemporalContourMapVisualization")
@@ -63,7 +60,5 @@ namespace vizkit3d {
                 return plugin;
             }
             return NULL;
-        };
-    };
-    Q_EXPORT_PLUGIN2(QtPluginVizkitBase, QtPluginVizkitBase)
+        }
 }
