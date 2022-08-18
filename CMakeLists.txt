@@ -14,7 +14,7 @@ find_package(Boost COMPONENTS system thread)
 
 set(ROCK_TEST_ENABLED ON)
 
-find_package(PluginManager)
-find_package(EnvireGIS)
+find_package(PluginManager REQUIRED)
+find_package(EnvireGIS REQUIRED)
 rock_init(envire_maps 0.1)
 envire_gis_plugin_layout() #it extends rock_standard_layout

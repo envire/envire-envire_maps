@@ -35,5 +35,6 @@
   <depend package="slam/maps" />
   <depend package="envire/envire_core" />
   <depend package="envire/envire_gis"/>
+  <depend package="tools/plugin_manager"/>
 
 </package>
