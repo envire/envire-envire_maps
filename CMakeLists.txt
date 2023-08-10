@@ -18,4 +18,5 @@ set(ROCK_TEST_ENABLED ON)
 find_package(PluginManager)
 find_package(EnvireGIS)
 rock_init()
+rock_feature(NOCURDIR)
 envire_gis_plugin_layout() #it extends rock_standard_layout
