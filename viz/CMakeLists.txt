@@ -8,6 +8,7 @@ rock_vizkit_plugin(envire_maps-viz
         SpatioTemporalMLSMapVisualization.hpp
         SpatioTemporalOccupancyGridMapVisualization.hpp
         SpatioTemporalTraversabilityGridVisualization.hpp
+        PluginLoader.hpp
     HEADERS
         SpatioTemporalContourMapVisualization.hpp
         SpatioTemporalElevationMapVisualization.hpp
