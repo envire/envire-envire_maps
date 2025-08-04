@@ -78,4 +78,10 @@
       <class class_name="maps::grid::MLSMapPrecalculated"></class>
     </associations>
   </class>
+  <class class_name="envire::core::Item<maps::grid::OccupancyGridMap>" base_class_name="envire::core::ItemBase">
+    <description>Precalculated multi-level surface map</description>
+    <associations>
+      <class class_name="maps::grid::OccupancyGridMap"></class>
+    </associations>
+  </class>
 </library>
