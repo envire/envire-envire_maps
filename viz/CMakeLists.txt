@@ -1,50 +1,29 @@
 rock_find_qt4(OPTIONAL)
 rock_find_qt5(OPTIONAL)
 
-if(ROCK_QT_VERSION_4)
-    rock_vizkit_plugin(envire_maps-viz
-            PluginLoader.cpp
-        MOC
-            SpatioTemporalContourMapVisualization.hpp
-            SpatioTemporalElevationMapVisualization.hpp
-            SpatioTemporalGridMapVisualization.hpp
-            SpatioTemporalMLSMapVisualization.hpp
-            SpatioTemporalOccupancyGridMapVisualization.hpp
-            SpatioTemporalTraversabilityGridVisualization.hpp
-        HEADERS
-            SpatioTemporalContourMapVisualization.hpp
-            SpatioTemporalElevationMapVisualization.hpp
-            SpatioTemporalGridMapVisualization.hpp
-            SpatioTemporalMLSMapVisualization.hpp
-            SpatioTemporalOccupancyGridMapVisualization.hpp
-            SpatioTemporalTraversabilityGridVisualization.hpp
-        DEPS
-            envire_maps
-        DEPS_PKGCONFIG
-            maps-viz
-    )
-endif(ROCK_QT_VERSION_4)
+include(RockQt)
 
-if(ROCK_QT_VERSION_5)
-    rock_vizkit_plugin_qt5(envire_maps-viz-qt5
-            PluginLoader.cpp
-        MOC5
-            SpatioTemporalContourMapVisualization.hpp
-            SpatioTemporalElevationMapVisualization.hpp
-            SpatioTemporalGridMapVisualization.hpp
-            SpatioTemporalMLSMapVisualization.hpp
-            SpatioTemporalOccupancyGridMapVisualization.hpp
-            SpatioTemporalTraversabilityGridVisualization.hpp
-        HEADERS
-            SpatioTemporalContourMapVisualization.hpp
-            SpatioTemporalElevationMapVisualization.hpp
-            SpatioTemporalGridMapVisualization.hpp
-            SpatioTemporalMLSMapVisualization.hpp
-            SpatioTemporalOccupancyGridMapVisualization.hpp
-            SpatioTemporalTraversabilityGridVisualization.hpp
-        DEPS
-            envire_maps
-        DEPS_PKGCONFIG
-            maps-viz-qt5
-    )
-endif(ROCK_QT_VERSION_5)
+rock_qt_vizkit_plugin(
+    TARGETPREFIX envire_maps-viz
+    QT4_SUFFIX ""
+    SOURCES
+        PluginLoader.cpp
+    MOC
+        SpatioTemporalContourMapVisualization.hpp
+        SpatioTemporalElevationMapVisualization.hpp
+        SpatioTemporalGridMapVisualization.hpp
+        SpatioTemporalMLSMapVisualization.hpp
+        SpatioTemporalOccupancyGridMapVisualization.hpp
+        SpatioTemporalTraversabilityGridVisualization.hpp
+    HEADERS
+        SpatioTemporalContourMapVisualization.hpp
+        SpatioTemporalElevationMapVisualization.hpp
+        SpatioTemporalGridMapVisualization.hpp
+        SpatioTemporalMLSMapVisualization.hpp
+        SpatioTemporalOccupancyGridMapVisualization.hpp
+        SpatioTemporalTraversabilityGridVisualization.hpp
+    DEPS
+        envire_maps
+    DEPS_PKGCONFIG_QT
+        maps-viz
+)
