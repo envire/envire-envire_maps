@@ -16,6 +16,7 @@ rock_qt_vizkit_plugin(
         SpatioTemporalMLSMapVisualization.hpp
         SpatioTemporalOccupancyGridMapVisualization.hpp
         SpatioTemporalTraversabilityGridVisualization.hpp
+        PluginLoader.hpp
     HEADERS
         SpatioTemporalContourMapVisualization.hpp
         SpatioTemporalElevationMapVisualization.hpp
