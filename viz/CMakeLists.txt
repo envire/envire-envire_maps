@@ -1,4 +1,13 @@
-rock_vizkit_plugin(envire_maps-viz
+rock_find_qt4(OPTIONAL)
+rock_find_qt5(OPTIONAL)
+
+include(RockQt)
+
+rock_qt_vizkit_plugin(
+    TARGETPREFIX envire_maps-viz
+    QT4_SUFFIX ""
+    MISSINGQTDEPS_NOBUILD
+    SOURCES
         PluginLoader.cpp
     MOC
         SpatioTemporalContourMapVisualization.hpp
@@ -7,6 +16,7 @@ rock_vizkit_plugin(envire_maps-viz
         SpatioTemporalMLSMapVisualization.hpp
         SpatioTemporalOccupancyGridMapVisualization.hpp
         SpatioTemporalTraversabilityGridVisualization.hpp
+        PluginLoader.hpp
     HEADERS
         SpatioTemporalContourMapVisualization.hpp
         SpatioTemporalElevationMapVisualization.hpp
@@ -16,6 +26,6 @@ rock_vizkit_plugin(envire_maps-viz
         SpatioTemporalTraversabilityGridVisualization.hpp
     DEPS
         envire_maps
-    DEPS_PKGCONFIG
+    DEPS_PKGCONFIG_QT
         maps-viz
 )
